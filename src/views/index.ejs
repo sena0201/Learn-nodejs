@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>NodeJS Basic</title>
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
+
+    <div style="padding-left:16px">
+        <h2>List user:</h2>
+        <div class="w3-container">
+            <table class="w3-table-all w3-centered">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let user of users) { %>
+                        <tr>
+                            <td>
+                                <%= user.firstName %>
+                            </td>
+                            <th>
+                                <%= user.lastName %>
+                            </th>
+                            <th style="display: flex; gap: 20px; justify-content: center;">
+                                <a href="/detail/user/<%= user.id %>">Chi tiết</a>
+                                <a href="/edit/user/<%= user.id %>">Sửa</a>
+                                <a href="/delete/user/<%= user.id %>">Xóa</a>
+                            </th>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+
+
+            <form action="./create" method="POST" style="width: 60%; margin: 0 auto; padding: 24px; border: 2px solid #ccc; display: flex; flex-direction: column; align-items: center; margin-top: 50px;">
+                <div class="form-group">
+                    <label for="">First Name: </label> <br>
+                    <input type="text" class="form-control" name="firstName" style="margin-bottom: 10px;">
+                </div>
+                <div class="form-group">
+                    <label for="">Last Name: </label> <br>
+                    <input type="text" class="form-control" name="lastName" style="margin-bottom: 10px;">
+                </div>
+                <div class="form-group">
+                    <label for="">Email: </label> <br>
+                    <input type="text" class="form-control" name="email" style="margin-bottom: 10px;">
+                </div>
+                <div class="form-group">
+                    <label for="">Address: </label> <br>
+                    <input type="text" class="form-control" name="address" style="margin-bottom: 10px;">
+                </div>
+                <button type="submit" class="btn btn-save">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
